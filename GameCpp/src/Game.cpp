@@ -202,6 +202,12 @@ void Game::UpdateEBar(const float& delta)
 	}
 }
 
+/// <summary>
+/// バーとボールの衝突処理
+/// </summary>
+/// <param name="flag">
+/// trueなら1Pのバーについて，falseなら2Pのバーについて衝突処理を行う
+/// </param>
 void Game::ColidBoll(const bool flag)
 {
 	// Bounce if needed
@@ -224,11 +230,11 @@ void Game::ColidBoll(const bool flag)
 	{
 		mIsRunning = false;
 	}
-	// Did the ball collide with the right wall?
-	else if (mBallPos.x >= (1024.0f - thickness) && mBallVel.x > 0.0f)
-	{
-		mBallVel.x *= -1.0f;
-	}
+	//// Did the ball collide with the right wall?
+	//else if (mBallPos.x >= (1024.0f - thickness) && mBallVel.x > 0.0f)
+	//{
+	//	mBallVel.x *= -1.0f;
+	//}
 	
 	// Did the ball collide with the top wall?
 	if (mBallPos.y <= thickness && mBallVel.y < 0.0f)
@@ -273,12 +279,12 @@ void Game::GenerateOutput()
 	wall.y = 768 - thickness;
 	SDL_RenderFillRect(mRenderer, &wall);
 	
-	// Draw right wall
-	wall.x = 1024 - thickness;
-	wall.y = 0;
-	wall.w = thickness;
-	wall.h = 1024;
-	SDL_RenderFillRect(mRenderer, &wall);
+	//// Draw right wall
+	//wall.x = 1024 - thickness;
+	//wall.y = 0;
+	//wall.w = thickness;
+	//wall.h = 1024;
+	//SDL_RenderFillRect(mRenderer, &wall);
 	
 	// Draw paddle
 	SDL_Rect paddle{
