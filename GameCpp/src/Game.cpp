@@ -143,19 +143,8 @@ void Game::UpdateGame()
 	mTicksCount = SDL_GetTicks();
 	
 	// Update paddle position based on direction
-	if (mPaddleDir != 0)
-	{
-		mPaddlePos.y += mPaddleDir * 300.0f * deltaTime;
-		// Make sure paddle doesn't move off screen!
-		if (mPaddlePos.y < (paddleH/2.0f + thickness))
-		{
-			mPaddlePos.y = paddleH/2.0f + thickness;
-		}
-		else if (mPaddlePos.y > (768.0f - paddleH/2.0f - thickness))
-		{
-			mPaddlePos.y = 768.0f - paddleH/2.0f - thickness;
-		}
-	}
+	UpdateMBar(deltaTime);
+	UpdateEBar(deltaTime);
 	
 	// Update ball position based on ball velocity
 	mBallPos.x += mBallVel.x * deltaTime;
@@ -197,6 +186,54 @@ void Game::UpdateGame()
 		mBallVel.y > 0.0f)
 	{
 		mBallVel.y *= -1;
+	}
+}
+
+/// <summary>
+/// 1Pのバーを動かす
+/// </summary>
+/// <param name="delta">
+/// 1フレームの時間変化
+/// </param>
+void Game::UpdateMBar(const float& delta)
+{
+	// Update paddle position based on direction
+	if (mPaddleDir != 0)
+	{
+		mPaddlePos.y += mPaddleDir * 300.0f * delta;
+		// Make sure paddle doesn't move off screen!
+		if (mPaddlePos.y < (paddleH/2.0f + thickness))
+		{
+			mPaddlePos.y = paddleH/2.0f + thickness;
+		}
+		else if (mPaddlePos.y > (768.0f - paddleH/2.0f - thickness))
+		{
+			mPaddlePos.y = 768.0f - paddleH/2.0f - thickness;
+		}
+	}
+}
+
+/// <summary>
+/// 2Pのバーを動かす
+/// </summary>
+/// <param name="delta">
+/// 1フレームの時間変化
+/// </param>
+void Game::UpdateEBar(const float& delta)
+{
+	// Update paddle position based on direction
+	if (ePaddleDir != 0)
+	{
+		ePaddlePos.y += ePaddleDir * 300.0f * delta;
+		// Make sure paddle doesn't move off screen!
+		if (ePaddlePos.y < (paddleH/2.0f + thickness))
+		{
+			ePaddlePos.y = paddleH/2.0f + thickness;
+		}
+		else if (ePaddlePos.y > (768.0f - paddleH/2.0f - thickness))
+		{
+			ePaddlePos.y = 768.0f - paddleH/2.0f - thickness;
+		}
 	}
 }
 

@@ -32,6 +32,8 @@ private:
 	// Helper functions for the game loop
 	void ProcessInput();
 	void UpdateGame();
+	void UpdateMBar(const float&);
+	void UpdateEBar(const float&);
 	void GenerateOutput();
 
 	// Window created by SDL
