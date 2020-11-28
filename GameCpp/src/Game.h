@@ -34,6 +34,7 @@ private:
 	void UpdateGame();
 	void UpdateMBar(const float&);
 	void UpdateEBar(const float&);
+	void ColidBoll(const bool);
 	void GenerateOutput();
 
 	// Window created by SDL
