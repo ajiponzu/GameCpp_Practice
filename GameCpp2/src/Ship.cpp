@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------
 // From Game Programming in C++ by Sanjay Madhav
 // Copyright (C) 2017 Sanjay Madhav. All rights reserved.
-// 
+//
 // Released under the BSD License
 // See LICENSE in root directory for full details.
 // ----------------------------------------------------------------
@@ -12,12 +12,13 @@
 
 Ship::Ship(Game* game)
 	:Actor(game)
-	,mRightSpeed(0.0f)
-	,mDownSpeed(0.0f)
+	, mRightSpeed(0.0f)
+	, mDownSpeed(0.0f)
 {
 	// Create an animated sprite component
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
-	std::vector<SDL_Texture*> anims = {
+	std::unordered_map<Actor::State, std::vector<SDL_Texture*>> anims;
+	anims[State::EActive] = {
 		game->GetTexture("Assets/Ship01.png"),
 		game->GetTexture("Assets/Ship02.png"),
 		game->GetTexture("Assets/Ship03.png"),

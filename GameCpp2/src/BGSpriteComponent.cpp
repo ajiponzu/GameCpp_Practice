@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------
 // From Game Programming in C++ by Sanjay Madhav
 // Copyright (C) 2017 Sanjay Madhav. All rights reserved.
-// 
+//
 // Released under the BSD License
 // See LICENSE in root directory for full details.
 // ----------------------------------------------------------------
@@ -9,9 +9,9 @@
 #include "BGSpriteComponent.h"
 #include "Actor.h"
 
-BGSpriteComponent::BGSpriteComponent(class Actor* owner, int drawOrder)
+BGSpriteComponent::BGSpriteComponent(Actor* owner, int drawOrder)
 	:SpriteComponent(owner, drawOrder)
-	,mScrollSpeed(0.0f)
+	, mScrollSpeed(0.0f)
 {
 }
 

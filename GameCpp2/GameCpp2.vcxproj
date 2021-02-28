@@ -24,6 +24,7 @@
     <ClCompile Include="src\BGSpriteComponent.cpp" />
     <ClCompile Include="src\Component.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Human.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\Ship.cpp" />
@@ -35,6 +36,7 @@
     <ClInclude Include="src\BGSpriteComponent.h" />
     <ClInclude Include="src\Component.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Human.h" />
     <ClInclude Include="src\Math.h" />
     <ClInclude Include="src\Ship.h" />
     <ClInclude Include="src\SpriteComponent.h" />

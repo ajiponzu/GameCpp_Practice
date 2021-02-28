@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------
 // From Game Programming in C++ by Sanjay Madhav
 // Copyright (C) 2017 Sanjay Madhav. All rights reserved.
-// 
+//
 // Released under the BSD License
 // See LICENSE in root directory for full details.
 // ----------------------------------------------------------------
@@ -11,7 +11,7 @@
 
 Component::Component(Actor* owner, int updateOrder)
 	:mOwner(owner)
-	,mUpdateOrder(updateOrder)
+	, mUpdateOrder(updateOrder)
 {
 	// Add to actor's vector of components
 	mOwner->AddComponent(this);

@@ -1,12 +1,13 @@
 // ----------------------------------------------------------------
 // From Game Programming in C++ by Sanjay Madhav
 // Copyright (C) 2017 Sanjay Madhav. All rights reserved.
-// 
+//
 // Released under the BSD License
 // See LICENSE in root directory for full details.
 // ----------------------------------------------------------------
 
 #pragma once
+#include <unordered_map>
 #include <vector>
 #include "Math.h"
 
@@ -15,9 +16,12 @@ using Component = class Component;
 class Actor
 {
 public:
-	enum State
+	enum class State
 	{
 		EActive,
+		EMoving,
+		EJumping,
+		EAtacking,
 		EPaused,
 		EDead
 	};
@@ -44,7 +48,6 @@ public:
 	void SetState(State state) { mState = state; }
 
 	class Game* GetGame() { return mGame; }
-
 
 	// Add/remove components
 	void AddComponent(Component* component);

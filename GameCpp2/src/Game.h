@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------
 // From Game Programming in C++ by Sanjay Madhav
 // Copyright (C) 2017 Sanjay Madhav. All rights reserved.
-// 
+//
 // Released under the BSD License
 // See LICENSE in root directory for full details.
 // ----------------------------------------------------------------
@@ -28,7 +28,7 @@ public:
 
 	void AddSprite(SpriteComponent* sprite);
 	void RemoveSprite(SpriteComponent* sprite);
-	
+
 	SDL_Texture* GetTexture(const std::string& fileName);
 private:
 	void ProcessInput();
@@ -36,7 +36,7 @@ private:
 	void GenerateOutput();
 	void LoadData();
 	void UnloadData();
-	
+
 	// Map of textures loaded
 	std::unordered_map<std::string, SDL_Texture*> mTextures;
 
@@ -57,4 +57,6 @@ private:
 
 	// Game-specific
 	class Ship* mShip; // Player's ship
+
+	class Human* mHuman; // Player's human
 };

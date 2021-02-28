@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------
 // From Game Programming in C++ by Sanjay Madhav
 // Copyright (C) 2017 Sanjay Madhav. All rights reserved.
-// 
+//
 // Released under the BSD License
 // See LICENSE in root directory for full details.
 // ----------------------------------------------------------------
@@ -12,7 +12,7 @@
 #include <algorithm>
 
 Actor::Actor(Game* game)
-	:mState(EActive)
+	:mState(Actor::State::EActive)
 	, mPosition(Vector2::Zero)
 	, mScale(1.0f)
 	, mRotation(0.0f)
@@ -34,7 +34,7 @@ Actor::~Actor()
 
 void Actor::Update(float deltaTime)
 {
-	if (mState == EActive)
+	if (mState != State::EDead && mState != State::EPaused)
 	{
 		UpdateComponents(deltaTime);
 		UpdateActor(deltaTime);
