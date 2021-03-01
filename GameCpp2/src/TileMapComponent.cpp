@@ -5,20 +5,26 @@ TileMapComponent::TileMapComponent(Actor* owner, const int& tileSize, const floa
 	:SpriteComponent(owner, drawOrder)
 	, mTileSize(tileSize)
 	, mScrollSpeed(scrollSpeed)
+	, mScrollOffset(.0f)
+	, mScreenSizeX(0)
+	, mScreenSizeY(0)
 {
 }
 
 void TileMapComponent::Update(float deltaTime)
 {
+	if (mOwner->GetState() == Actor::State::EMoving)
+	{
+		mScrollOffset += mScrollSpeed * deltaTime;
+	}
 }
 
 void TileMapComponent::Draw(SDL_Renderer* renderer)
 {
 	if (mTexture)
 	{
-		int displayX = 0;
+		int displayX = 0, offset = static_cast<int>(mScrollOffset);
 		const int& tileNumX = mTexWidth / mTileSize;
-		const int& sx = static_cast<int>(mScreenSize.x);
 
 		SDL_Rect srcR{}, destR{};
 		srcR.w = srcR.h = destR.w = destR.h = mTileSize;
@@ -28,7 +34,7 @@ void TileMapComponent::Draw(SDL_Renderer* renderer)
 			displayX = 0;
 			for (const auto & tileIdx : mapData)
 			{
-				srcR.x = (displayX % mTileSize) * mTileSize;
+				srcR.x = ((displayX % mTileSize) * mTileSize + offset) % mScreenSizeX;
 				srcR.y = (displayX / mTileSize) * mTileSize;
 
 				destR.x = (tileIdx % tileNumX) * mTileSize;
@@ -67,6 +73,6 @@ void TileMapComponent::LoadCsvMapData(const std::string& fileName)
 			lineLen++;
 		}
 	}
-	mScreenSize.x = mTileSize * lineLen;
-	mScreenSize.y = mTileSize * lineNum;
+	mScreenSizeX = mTileSize * lineLen;
+	mScreenSizeY = mTileSize * lineNum;
 }

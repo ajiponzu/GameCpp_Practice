@@ -20,8 +20,10 @@ public:
 	void SetScrollSpeed(const float& speed) { mScrollSpeed = speed; }
 	float GetScrollSpeed() const { return mScrollSpeed; }
 private:
-	Vector2 mScreenSize;
 	MapDataList mMapDataList;
 	int mTileSize;
 	float mScrollSpeed;
+	float mScrollOffset;
+	int mScreenSizeX;
+	int mScreenSizeY;
 };

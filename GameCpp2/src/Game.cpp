@@ -191,7 +191,7 @@ void Game::LoadData()
 	//bg->SetBGTextures(bgtexs);
 	//bg->SetScrollSpeed(-200.0f);
 
-	auto tm = new TileMapComponent(temp);
+	auto tm = new TileMapComponent(mHuman, 32, 20.f);
 	tm->SetTexture(GetTexture("Assets/Tiles.png"));
 	tm->LoadCsvMapData("Assets/MapLayer3.csv");
 	tm->LoadCsvMapData("Assets/MapLayer2.csv");
