@@ -29,6 +29,7 @@
     <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\Ship.cpp" />
     <ClCompile Include="src\SpriteComponent.cpp" />
+    <ClCompile Include="src\TileMapComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Actor.h" />
@@ -40,6 +41,7 @@
     <ClInclude Include="src\Math.h" />
     <ClInclude Include="src\Ship.h" />
     <ClInclude Include="src\SpriteComponent.h" />
+    <ClInclude Include="src\TileMapComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
