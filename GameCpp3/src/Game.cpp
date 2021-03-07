@@ -127,10 +127,26 @@ void Game::UpdateGame()
 	}
 	mPendingActors.clear();
 
+	if (mShip == nullptr)
+	{
+		mUntilRestartTime -= deltaTime;
+		if (mUntilRestartTime <= 0.0f)
+		{
+			mShip = new Ship(this);
+			mShip->SetPosition(Vector2(512.0f, 384.0f));
+			mShip->SetRotation(Math::PiOver2);
+		}
+	}
+	else if (mShip->GetState() == Actor::EDead)
+	{
+		mShip = nullptr;
+		mUntilRestartTime = 2.0f;
+	}
+
 	// Add any dead actors to a temp vector
 	std::vector<Actor*> deadActors;
 	for (auto actor : mActors)
-	{
+	{ 
 		if (actor->GetState() == Actor::EDead)
 		{
 			deadActors.emplace_back(actor);

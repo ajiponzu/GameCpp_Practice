@@ -60,4 +60,6 @@ private:
 	// Game-specific
 	class Ship* mShip; // Player's ship
 	std::vector<class Asteroid*> mAsteroids;
+
+	float mUntilRestartTime = 0.0f;
 };

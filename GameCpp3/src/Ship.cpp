@@ -7,10 +7,12 @@
 // ----------------------------------------------------------------
 
 #include "Ship.h"
+#include "CircleComponent.h"
 #include "SpriteComponent.h"
 #include "InputComponent.h"
 #include "Game.h"
 #include "Laser.h"
+#include "Asteroid.h"
 
 Ship::Ship(Game* game)
 	:Actor(game)
@@ -28,11 +30,20 @@ Ship::Ship(Game* game)
 	ic->SetCounterClockwiseKey(SDL_SCANCODE_D);
 	ic->SetMaxForwardSpeed(300.0f);
 	ic->SetMaxAngularSpeed(Math::TwoPi);
+
+	//衝突判定するコンポーネント
+	mCircle = new CircleComponent(this);
+	mCircle->SetRadius(20.0f);
 }
 
 void Ship::UpdateActor(float deltaTime)
 {
 	mLaserCooldown -= deltaTime;
+	for (auto& ast : GetGame()->GetAsteroids())
+	{
+		if (::Intersect(*mCircle, *(ast->GetCircle())))
+			SetState(Actor::State::EDead);
+	}
 }
 
 void Ship::ActorInput(const uint8_t* keyState)
