@@ -28,8 +28,9 @@ Ship::Ship(Game* game)
 	ic->SetBackKey(SDL_SCANCODE_S);
 	ic->SetClockwiseKey(SDL_SCANCODE_A);
 	ic->SetCounterClockwiseKey(SDL_SCANCODE_D);
-	ic->SetMaxForwardSpeed(300.0f);
 	ic->SetMaxAngularSpeed(Math::TwoPi);
+	ic->SetForcePerFrame(Vector2(1500.0f, 1500.0f));
+	ic->SetMass(50.0f);
 
 	//衝突判定するコンポーネント
 	mCircle = new CircleComponent(this);

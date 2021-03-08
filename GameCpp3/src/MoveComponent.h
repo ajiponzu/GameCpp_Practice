@@ -8,6 +8,7 @@
 
 #pragma once
 #include "Component.h"
+#include "Math.h"
 
 class MoveComponent : public Component
 {
@@ -18,12 +19,27 @@ public:
 	void Update(float deltaTime) override;
 	
 	float GetAngularSpeed() const { return mAngularSpeed; }
-	float GetForwardSpeed() const { return mForwardSpeed; }
+	Vector2 GetForcePerFrame() const { return mForcePerFrame; }
+	Vector2 GetSumOfForce() const { return mSumOfForce; }
+	float GetMass() const { return mMass; }
+	Vector2 GetVelocity() const { return mVelocity; }
 	void SetAngularSpeed(float speed) { mAngularSpeed = speed; }
-	void SetForwardSpeed(float speed) { mForwardSpeed = speed; }
+	void SetForcePerFrame(Vector2 forcePerFrame) { mForcePerFrame = forcePerFrame; }
+	void SetSumOfForce(Vector2 sumOfForce) { mSumOfForce = sumOfForce; }
+	void SetMass(float mass) { mMass = mass; }
+	void SetVelocity(Vector2 velocity) { mVelocity = velocity; }
+
+	void AddForce();
+	void AddForce(class Vector2& force);
 private:
 	// Controls rotation (radians/second)
 	float mAngularSpeed;
 	// Controls forward movement (units/second)
-	float mForwardSpeed;
+	//float mForwardSpeed;
+
+	Vector2 mSumOfForce{};
+	float mMass;
+	Vector2 mVelocity{};
+
+	Vector2 mForcePerFrame{};
 };

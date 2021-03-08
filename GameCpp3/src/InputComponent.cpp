@@ -22,16 +22,13 @@ InputComponent::InputComponent(class Actor* owner)
 void InputComponent::ProcessInput(const uint8_t* keyState)
 {
 	// Calculate forward speed for MoveComponent
-	float forwardSpeed = 0.0f;
+	Vector2 force = Vector2::Zero;
 	if (keyState[mForwardKey])
-	{
-		forwardSpeed += mMaxForwardSpeed;
-	}
+		force = GetForcePerFrame();
 	if (keyState[mBackKey])
-	{
-		forwardSpeed -= mMaxForwardSpeed;
-	}
-	SetForwardSpeed(forwardSpeed);
+		force = -1 * GetForcePerFrame();
+
+	AddForce(force);
 
 	// Calculate angular speed for MoveComponent
 	float angularSpeed = 0.0f;
