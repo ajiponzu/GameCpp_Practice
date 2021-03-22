@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\SOIL2.1.20.0.8\build\native\SOIL2.props" Condition="Exists('..\packages\SOIL2.1.20.0.8\build\native\SOIL2.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,19 +20,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Actor.cpp" />
-    <ClCompile Include="src\Asteroid.cpp" />
-    <ClCompile Include="src\CircleComponent.cpp" />
-    <ClCompile Include="src\Component.cpp" />
-    <ClCompile Include="src\Game.cpp" />
-    <ClCompile Include="src\InputComponent.cpp" />
-    <ClCompile Include="src\Laser.cpp" />
-    <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Math.cpp" />
-    <ClCompile Include="src\MoveComponent.cpp" />
-    <ClCompile Include="src\Random.cpp" />
-    <ClCompile Include="src\Ship.cpp" />
-    <ClCompile Include="src\SpriteComponent.cpp" />
+    <None Include="packages.config" />
+    <None Include="Shaders\Basic.frag" />
+    <None Include="Shaders\Basic.vert" />
+    <None Include="Shaders\Sprite.frag" />
+    <None Include="Shaders\Sprite.vert" />
+    <None Include="Shaders\Transform.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Actor.h" />
@@ -44,13 +38,34 @@
     <ClInclude Include="src\Math.h" />
     <ClInclude Include="src\MoveComponent.h" />
     <ClInclude Include="src\Random.h" />
+    <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Ship.h" />
     <ClInclude Include="src\SpriteComponent.h" />
+    <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\VertexArray.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Actor.cpp" />
+    <ClCompile Include="src\Asteroid.cpp" />
+    <ClCompile Include="src\CircleComponent.cpp" />
+    <ClCompile Include="src\Component.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\InputComponent.cpp" />
+    <ClCompile Include="src\Laser.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Math.cpp" />
+    <ClCompile Include="src\MoveComponent.cpp" />
+    <ClCompile Include="src\Random.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Ship.cpp" />
+    <ClCompile Include="src\SpriteComponent.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\VertexArray.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5015E2A7-C4C6-418F-B227-AF1D70B98D14}</ProjectGuid>
+    <ProjectGuid>{7760F6AB-FB32-4C4C-9726-7DF3D9F2BC82}</ProjectGuid>
     <RootNamespace>GameCpp2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -180,5 +195,16 @@
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets" Condition="Exists('..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets')" />
+    <Import Project="..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets" Condition="Exists('..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.redist.0.1.0.1\build\native\nupengl.core.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\nupengl.core.0.1.0.1\build\native\nupengl.core.targets'))" />
+    <Error Condition="!Exists('..\packages\SOIL2.1.20.0.8\build\native\SOIL2.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SOIL2.1.20.0.8\build\native\SOIL2.props'))" />
+  </Target>
 </Project>
